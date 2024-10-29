@@ -26,11 +26,11 @@ public class Island {
     }
 
     private void initializeAnimals() {
-        addAnimalsToCell(new Bear("Медведь-", 500, 5, 2, 80, 0, 0), 25); // 25 медведей
-        addAnimalsToCell(new Deer("Олень-", 300, 20, 4, 60, 0, 0), 100); // 100 оленей
-        addAnimalsToCell(new Duck("Утка-", 1, 200, 4, 0.5, 0, 0), 1000); // 1000 уток
-        addAnimalsToCell(new Rabbit("Кролик-", 2, 150, 2, 0.45, 0, 0), 750); // 750 кроликов
-        addAnimalsToCell(new Wolf("Волк-", 50, 30, 1, 3, 0, 0), 150); // 150 волков
+        addAnimalsToCell(new Bear("Медведь-", 500, 5, 2, 80, 0, 0), 10);
+        addAnimalsToCell(new Deer("Олень-", 300, 20, 4, 60, 0, 0), 40);
+        addAnimalsToCell(new Duck("Утка-", 1, 200, 4, 0.5, 0, 0), 400);
+        addAnimalsToCell(new Rabbit("Кролик-", 2, 150, 2, 0.45, 0, 0), 300);
+        addAnimalsToCell(new Wolf("Волк-", 50, 30, 1, 3, 0, 0), 100);
     }
 
     private void addAnimalsToCell(Animal animalTemplate, int count) {

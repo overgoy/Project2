@@ -3,6 +3,8 @@ package animal;
 import island.Cell;
 import island.Island;
 
+import java.util.List;
+
 
 public class Rabbit extends Herbivore {
 
@@ -18,6 +20,23 @@ public class Rabbit extends Herbivore {
     @Override
     public void move(Island island, int x, int y) {
         super.move(island, x, y);
+    }
+
+    @Override
+    public void reproduce(Cell cell) {
+        if (isHungry()) {
+            System.out.println("Кролик голоден и не может размножаться.");
+            return;
+        }
+
+        List<Animal> animalsInCell = cell.getAnimals();
+        long sameSpeciesCount = animalsInCell.stream().filter(animal -> animal instanceof Rabbit).count();
+
+        if (sameSpeciesCount >= 2 && sameSpeciesCount < maxCountOnCell) {
+            Rabbit offspring = new Rabbit(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
+            cell.addAnimal(offspring);
+            System.out.println("Родился кролик в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
+        }
     }
 
 }
