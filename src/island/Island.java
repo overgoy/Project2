@@ -3,6 +3,8 @@ package island;
 import animal.*;
 import plant.Plant;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Island {
@@ -26,11 +28,18 @@ public class Island {
     }
 
     private void initializeAnimals() {
-        addAnimalsToCell(new Bear("Медведь-", 500, 5, 2, 80, 0, 0), 15);
-        addAnimalsToCell(new Deer("Олень-", 300, 20, 4, 60, 0, 0), 60);
-        addAnimalsToCell(new Duck("Утка-", 1, 200, 4, 0.5, 0, 0), 600);
-        addAnimalsToCell(new Rabbit("Кролик-", 2, 150, 2, 0.45, 0, 0), 450);
-        addAnimalsToCell(new Wolf("Волк-", 50, 30, 1, 3, 0, 0), 150);
+        Map<Animal, Integer> animalMap = new HashMap<>();
+        animalMap.put(new Bear("Медведь-", 500, 5, 2, 80, 0, 0), 15);
+        animalMap.put(new Deer("Олень-", 300, 20, 4, 60, 0, 0), 60);
+        animalMap.put(new Duck("Утка-", 1, 200, 4, 0.5, 0, 0), 600);
+        animalMap.put(new Rabbit("Кролик-", 2, 150, 2, 0.45, 0, 0), 450);
+        animalMap.put(new Wolf("Волк-", 50, 30, 1, 3, 0, 0), 150);
+
+        for (Map.Entry<Animal, Integer> entry : animalMap.entrySet()) {
+            Animal animal = entry.getKey();
+            int quantity = entry.getValue();
+            addAnimalsToCell(animal, quantity);
+        }
     }
 
     private void addAnimalsToCell(Animal animalTemplate, int count) {
