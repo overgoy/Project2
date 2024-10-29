@@ -8,7 +8,7 @@ import java.util.List;
 public class Rabbit extends Herbivore {
 
     public Rabbit(String name, double weight, int maxCountOnCell, int speed, double satiety, int x, int y) {
-        super(name, weight, maxCountOnCell, speed, satiety, x , y);
+        super(name, weight, maxCountOnCell, speed, satiety, x, y);
     }
 
     @Override

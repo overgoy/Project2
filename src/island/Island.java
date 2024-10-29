@@ -12,7 +12,6 @@ public class Island {
     private final int width; // Width of the island
     private final int height; // Height of the island
 
-    // Constructor to initialize the island with given dimensions
     public Island(int width, int height) {
         this.width = width;
         this.height = height;

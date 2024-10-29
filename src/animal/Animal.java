@@ -31,25 +31,19 @@ public abstract class Animal {
         return y;
     }
 
-    public void setPosition(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
 
     public abstract void eat(Cell cell);
+
     public abstract void reproduce(Cell cell);
+
     public abstract void move(Island island, int x, int y);
 
     protected boolean isHungry() {
         return hunger < satiety;
     }
+
     protected void resetHunger() {
         hunger = satiety;
-    }
-
-    protected void decreaseHunger(double amount) {
-        hunger -= amount;
-        if (hunger < 0) hunger = 0;
     }
 
     public String getName() {
@@ -64,5 +58,7 @@ public abstract class Animal {
         return satiety;
     }
 
-    public int getSpeed() { return speed;}
+    public int getSpeed() {
+        return speed;
+    }
 }

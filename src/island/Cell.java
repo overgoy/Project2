@@ -51,10 +51,6 @@ public class Cell {
         plants.remove(plant);
     }
 
-    public int getId() {
-        return x * 100 + y; 
-    }
-
     public boolean hasPlants() {
         return !plants.isEmpty();
     }

@@ -2,12 +2,13 @@ package animal;
 
 import island.Cell;
 import island.Island;
+
 import java.util.List;
 
 public class Bear extends Predator {
 
     public Bear(String name, double weight, int maxCountOnCell, int speed, double satiety, int x, int y) {
-        super(name, weight, maxCountOnCell, speed, satiety, x,y);
+        super(name, weight, maxCountOnCell, speed, satiety, x, y);
     }
 
     @Override
