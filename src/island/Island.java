@@ -92,14 +92,5 @@ public class Island {
         return width;
     }
 
-    public List<Cell> getAllCells() {
-        List<Cell> cellList = new ArrayList<>();
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                cellList.add(cells[x][y]);
-            }
-        }
-        return cellList;
-    }
 
 }
