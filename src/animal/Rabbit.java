@@ -39,7 +39,7 @@ public class Rabbit extends Herbivore {
         if (sameSpeciesCount > 1) {
             Rabbit rabbit = new Rabbit("Кролик", 2, 150, 2, 0.45, x, y);
             cell.addAnimal(rabbit);
-            System.out.println("Родился кролик в ячейке " + cell.getId());
+            System.out.println("Родился кролик в ячейке " + "(" + cell.getX() + "," + cell.getY() + ")");
             resetHunger();
         }
     }

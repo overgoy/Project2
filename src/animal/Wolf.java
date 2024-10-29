@@ -38,7 +38,7 @@ public class Wolf extends Predator {
         if (sameSpeciesCount > 1) {
             Wolf wolf = new Wolf("Волк", 50, 30, 3, 8, x, y);
             cell.addAnimal(wolf);
-            System.out.println("Родился волк в ячейке " + cell.getId());
+            System.out.println("Родился волк в ячейке " + "(" + cell.getX() + "," + cell.getY() + ")");
             resetHunger();
         }
     }

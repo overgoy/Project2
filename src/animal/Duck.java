@@ -39,7 +39,7 @@ public class Duck extends Herbivore {
         if (sameSpeciesCount > 1) {
             Duck duck = new Duck("Утра", 1, 200, 4, 0.5, x, y);
             cell.addAnimal(duck);
-            System.out.println("Родилась утка в ячейке " + cell.getId());
+            System.out.println("Родилась утка в ячейке " + "(" + cell.getX() + "," + cell.getY() + ")");
             resetHunger();
         }
     }

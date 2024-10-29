@@ -35,7 +35,7 @@ public class Simulation {
                 if (cell.getPlants().size() < MAX_PLANTS_PER_CELL && random.nextDouble() < 0.002) {
                     Plant plant = new Plant("Трава", 1);
                     cell.addPlant(plant);
-                    System.out.println("Растение " + plant.getName() + " выросло в клетке (" + x + ", " + y + ")");
+                    System.out.println("Растение " + plant.getName() + " выросло в ячейке (" + x + ", " + y + ")");
                 }
             }
         }

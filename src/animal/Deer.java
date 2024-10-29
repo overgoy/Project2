@@ -39,7 +39,7 @@ public class Deer extends Herbivore {
         if (sameSpeciesCount > 1) {
             Deer deer = new Deer("Олень", 300.0, 20, 4, 50.0, x, y);
             cell.addAnimal(deer);
-            System.out.println("Родился олень в ячейке " + cell.getId());
+            System.out.println("Родился олень в ячейке " + "(" + cell.getX() + "," + cell.getY() + ")");
             resetHunger();
         }
     }

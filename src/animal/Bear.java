@@ -38,7 +38,7 @@ public class Bear extends Predator {
         if (sameSpeciesCount > 1) {
             Bear bear = new Bear("Медведь", 500.0, 5, 2, 80.0, x, y);
             cell.addAnimal(bear);
-            System.out.println("Родился медведь в ячейке" + cell.getId());
+            System.out.println("Родился медведь в ячейке" + "(" + cell.getX() + "," + cell.getY() + ")");
             resetHunger();
         }
     }
