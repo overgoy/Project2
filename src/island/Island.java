@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Island {
-    private final Cell[][] cells; // 2D array representing the island's cells
-    private final int width; // Width of the island
-    private final int height; // Height of the island
+    private final Cell[][] cells;
+    private final int width;
+    private final int height;
 
     public Island(int width, int height) {
         this.width = width;
@@ -20,7 +20,7 @@ public class Island {
 
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                cells[x][y] = new Cell(x, y); // Create a new Cell object for each coordinate
+                cells[x][y] = new Cell(x, y);
             }
         }
         initializeAnimals();
