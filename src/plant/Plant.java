@@ -12,4 +12,13 @@ public class Plant {
     public String getName() {
         return name;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void increaseQuantity(int amount) {
+        quantity += amount;
+    }
+
 }

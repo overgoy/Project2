@@ -3,8 +3,6 @@ package island;
 import animal.*;
 import plant.Plant;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Island {
@@ -28,35 +26,40 @@ public class Island {
     }
 
     private void initializeAnimals() {
+        addAnimalsToCell(new Bear("Медведь-", 500, 5, 2, 80, 0, 0), 25); // 25 медведей
+        addAnimalsToCell(new Deer("Олень-", 300, 20, 4, 60, 0, 0), 100); // 100 оленей
+        addAnimalsToCell(new Duck("Утка-", 1, 200, 4, 0.5, 0, 0), 1000); // 1000 уток
+        addAnimalsToCell(new Rabbit("Кролик-", 2, 150, 2, 0.45, 0, 0), 750); // 750 кроликов
+        addAnimalsToCell(new Wolf("Волк-", 50, 30, 1, 3, 0, 0), 150); // 150 волков
+    }
 
-        for (int i = 0; i < 25; i++) {
-            int x = (int) (Math.random() * cells.length);
-            int y = (int) (Math.random() * cells[0].length);
-            cells[x][y].addAnimal(new Bear("Медведь-" + i, 500, 5, 2, 80, x, y)); // Передаем координаты в конструктор
+    private void addAnimalsToCell(Animal animalTemplate, int count) {
+        int addedCount = 0;
+        Random random = new Random();
+
+        while (addedCount < count) {
+            int x = random.nextInt(cells.length);
+            int y = random.nextInt(cells[0].length);
+            Cell cell = cells[x][y];
+
+            if (cell.getAnimals().size() < animalTemplate.getMaxCountOnCell()) {
+                String animalName = animalTemplate.getName() + addedCount;
+                Animal newAnimal = createAnimal(animalTemplate, animalName, x, y);
+                cell.addAnimal(newAnimal);
+                addedCount++;
+            }
         }
+    }
 
-        for (int i = 0; i < 100; i++) {
-            int x = (int) (Math.random() * cells.length);
-            int y = (int) (Math.random() * cells[0].length);
-            cells[x][y].addAnimal(new Deer("Олень-" + i, 300, 20, 4, 60, x, y)); // Передаем координаты в конструктор
-        }
-
-        for (int i = 0; i < 1000; i++) {
-            int x = (int) (Math.random() * cells.length);
-            int y = (int) (Math.random() * cells[0].length);
-            cells[x][y].addAnimal(new Duck("Утка-" + i, 1, 200, 4, 0.5, x, y)); // Передаем координаты в конструктор
-        }
-
-        for (int i = 0; i < 750; i++) {
-            int x = (int) (Math.random() * cells.length);
-            int y = (int) (Math.random() * cells[0].length);
-            cells[x][y].addAnimal(new Rabbit("Кролик-" + i, 2, 150, 2, 0.45, x, y)); // Передаем координаты в конструктор
-        }
-
-        for (int i = 0; i < 150; i++) {
-            int x = (int) (Math.random() * cells.length);
-            int y = (int) (Math.random() * cells[0].length);
-            cells[x][y].addAnimal(new Wolf("Волк-" + i, 50, 30, 1, 3, x, y)); // Передаем координаты в конструктор
+    private Animal createAnimal(Animal animalTemplate, String name, int x, int y) {
+        try {
+            return animalTemplate.getClass()
+                    .getConstructor(String.class, double.class, int.class, int.class, double.class, int.class, int.class)
+                    .newInstance(name, animalTemplate.getWeight(), animalTemplate.getMaxCountOnCell(),
+                            animalTemplate.getSpeed(), animalTemplate.getSatiety(), x, y);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -64,14 +67,15 @@ public class Island {
         Random random = new Random();
         for (int x = 0; x < cells.length; x++) {
             for (int y = 0; y < cells[x].length; y++) {
-                if (random.nextDouble() < 0.5) {
+                Cell cell = cells[x][y];
+                int initialPlants = random.nextInt(5);
+                for (int i = 0; i < initialPlants; i++) {
                     Plant plant = new Plant("Трава", 1);
-                    cells[x][y].addPlant(plant);
+                    cell.addPlant(plant);
                 }
             }
         }
     }
-
 
     public Cell[][] getCells() {
         return cells;

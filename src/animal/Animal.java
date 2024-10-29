@@ -2,6 +2,8 @@ package animal;
 
 import island.*;
 
+import java.util.List;
+
 public abstract class Animal {
     protected String name;
     protected double weight;
@@ -34,9 +36,35 @@ public abstract class Animal {
 
     public abstract void eat(Cell cell);
 
-    public abstract void reproduce(Cell cell);
-
     public abstract void move(Island island, int x, int y);
+
+    public void reproduce(Cell cell) {
+        if (isHungry()) {
+            return;
+        }
+
+        List<Animal> animalsInCell = cell.getAnimals();
+        int sameSpeciesCount = 0;
+
+        for (Animal animal : animalsInCell) {
+            if (animal.getClass() == this.getClass()) {
+                sameSpeciesCount++;
+            }
+        }
+
+        if (sameSpeciesCount >= 2 && sameSpeciesCount < maxCountOnCell) {
+            try {
+                Animal offspring = this.getClass()
+                        .getConstructor(String.class, double.class, int.class, int.class, double.class, int.class, int.class)
+                        .newInstance(name, weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
+
+                cell.addAnimal(offspring);
+                System.out.println("Родился " + name + " в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     protected boolean isHungry() {
         return hunger < satiety;
@@ -60,5 +88,9 @@ public abstract class Animal {
 
     public int getSpeed() {
         return speed;
+    }
+
+    public int getMaxCountOnCell() {
+        return maxCountOnCell;
     }
 }

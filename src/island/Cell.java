@@ -31,20 +31,41 @@ public class Cell {
         return animals;
     }
 
+    public List<Animal> getAnimalsByType(Class<? extends Animal> animalClass) {
+        List<Animal> sameTypeAnimals = new ArrayList<>();
+        for (Animal animal : animals) {
+            if (animal.getClass() == animalClass) {
+                sameTypeAnimals.add(animal);
+            }
+        }
+        return sameTypeAnimals;
+    }
+
     public List<Plant> getPlants() {
         return plants;
     }
 
     public void addAnimal(Animal animal) {
-        animals.add(animal);
+        if (getAnimalsByType(animal.getClass()).size() < animal.getMaxCountOnCell()) {
+            animals.add(animal);
+        }
+    }
+    public void addPlant(Plant plant) {
+        boolean plantExists = false;
+        for (Plant existingPlant : plants) {
+            if (existingPlant.getName().equals(plant.getName())) {
+                existingPlant.increaseQuantity(plant.getQuantity());
+                plantExists = true;
+                break;
+            }
+        }
+        if (!plantExists) {
+            plants.add(plant);
+        }
     }
 
     public void removeAnimal(Animal animal) {
         animals.remove(animal);
-    }
-
-    public void addPlant(Plant plant) {
-        plants.add(plant);
     }
 
     public void removePlant(Plant plant) {
