@@ -29,9 +29,9 @@ public class Wolf extends Predator {
         List<Animal> animalsInCell = cell.getAnimals();
         long sameSpeciesCount = animalsInCell.stream().filter(animal -> animal instanceof Wolf).count();
 
-        if (sameSpeciesCount >= 2 && sameSpeciesCount < maxCountOnCell) {
-            Wolf offspring = new Wolf(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
-            cell.addAnimal(offspring);
+        if (sameSpeciesCount >= 2) {
+            Wolf wolf = new Wolf(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
+            cell.addAnimal(wolf);
             System.out.println("Родился волк в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
         }
     }

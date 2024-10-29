@@ -31,9 +31,9 @@ public class Bear extends Predator {
         List<Animal> animalsInCell = cell.getAnimals();
         long sameSpeciesCount = animalsInCell.stream().filter(animal -> animal instanceof Bear).count();
 
-        if (sameSpeciesCount >= 2 && sameSpeciesCount < maxCountOnCell) {
-            Bear offspring = new Bear(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
-            cell.addAnimal(offspring);
+        if (sameSpeciesCount >= 2) {
+            Bear bear = new Bear(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
+            cell.addAnimal(bear);
             System.out.println("Родился медведь в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
         }
     }

@@ -24,17 +24,17 @@ public class Deer extends Herbivore {
     @Override
     public void reproduce(Cell cell) {
         if (isHungry()) {
-            System.out.println("Медведь голоден и не может размножаться.");
+            System.out.println("Олень голоден и не может размножаться.");
             return;
         }
 
         List<Animal> animalsInCell = cell.getAnimals();
         long sameSpeciesCount = animalsInCell.stream().filter(animal -> animal instanceof Bear).count();
 
-        if (sameSpeciesCount >= 2 && sameSpeciesCount < maxCountOnCell) {
-            Bear offspring = new Bear(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
-            cell.addAnimal(offspring);
-            System.out.println("Родился медведь в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
+        if (sameSpeciesCount >= 2) {
+            Deer dear = new Deer(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
+            cell.addAnimal(dear);
+            System.out.println("Родился олень в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
         }
     }
 

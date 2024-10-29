@@ -31,9 +31,9 @@ public class Duck extends Herbivore {
         List<Animal> animalsInCell = cell.getAnimals();
         long sameSpeciesCount = animalsInCell.stream().filter(animal -> animal instanceof Duck).count();
 
-        if (sameSpeciesCount >= 2 && sameSpeciesCount < maxCountOnCell) {
-            Duck offspring = new Duck(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
-            cell.addAnimal(offspring);
+        if (sameSpeciesCount >= 2) {
+            Duck duck = new Duck(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
+            cell.addAnimal(duck);
             System.out.println("Родилась утка в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
         }
     }

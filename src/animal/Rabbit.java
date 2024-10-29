@@ -32,9 +32,9 @@ public class Rabbit extends Herbivore {
         List<Animal> animalsInCell = cell.getAnimals();
         long sameSpeciesCount = animalsInCell.stream().filter(animal -> animal instanceof Rabbit).count();
 
-        if (sameSpeciesCount >= 2 && sameSpeciesCount < maxCountOnCell) {
-            Rabbit offspring = new Rabbit(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
-            cell.addAnimal(offspring);
+        if (sameSpeciesCount >= 2) {
+            Rabbit rabbit = new Rabbit(name + " новый", weight, maxCountOnCell, speed, satiety, cell.getX(), cell.getY());
+            cell.addAnimal(rabbit);
             System.out.println("Родился кролик в ячейке (" + cell.getX() + ", " + cell.getY() + ")");
         }
     }
